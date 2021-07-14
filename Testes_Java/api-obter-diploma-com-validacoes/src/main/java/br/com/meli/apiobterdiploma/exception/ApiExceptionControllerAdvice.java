@@ -19,4 +19,10 @@ public class ApiExceptionControllerAdvice {
 	public ResponseEntity<String> defaultHandler(AlunoNotFoundException e){
 		return new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_FOUND);
 	}
+	
+	@org.springframework.web.bind.annotation.ExceptionHandler(LowAverageException.class)
+	public ResponseEntity<String> defaultHandler(LowAverageException e){
+		return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+	}
+	
 }
