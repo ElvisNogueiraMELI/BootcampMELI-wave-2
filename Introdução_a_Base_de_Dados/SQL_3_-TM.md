@@ -50,11 +50,6 @@ select a.first_name,a.last_name, m.title from actors a, movies m where a.favorit
 ```sql
 explain delete from temporary_movies where awards<5;
 ```
-+----+-------------+------------------+------------+------+---------------+------+---------+------+------+----------+-------------+
-| id | select_type | table            | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
-+----+-------------+------------------+------------+------+---------------+------+---------+------+------+----------+-------------+
-|  1 | DELETE      | temporary_movies | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   21 |   100.00 | Using where |
-+----+-------------+------------------+------------+------+---------------+------+---------+------+------+----------+-------------+
 
 ## 11. O que são os índices? Para que servem?
 Um índice é uma tabela de busca rápida para encontrar os registros. Eles são usados para fazer buscas que são feitas com frequência em tabelas grandes.
@@ -69,11 +64,3 @@ create index index_name_movies on movies(title);
 ```sql
 show index from movies;
 ```
-
-+--------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
-| Table  | Non_unique | Key_name                | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
-+--------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
-| movies |          0 | PRIMARY                 |            1 | id          | A         |          22 |     NULL | NULL   |      | BTREE      |         |               |
-| movies |          1 | movies_genre_id_foreign |            1 | genre_id    | A         |           9 |     NULL | NULL   | YES  | BTREE      |         |               |
-| movies |          1 | index_name_movies       |            1 | title       | A         |          22 |     NULL | NULL   |      | BTREE      |         |               |
-+--------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
